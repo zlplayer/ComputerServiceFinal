@@ -1,0 +1,88 @@
+﻿@{
+    var action = ViewContext.RouteData.Values["Action"]?.ToString();
+    var controller = ViewContext.RouteData.Values["Controller"]?.ToString();
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ComputerService</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ComputerService.MVC.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ComputerService</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark @(controller=="Home"&&action=="Index"?"Active":"") " asp-area="" asp-controller="Home" asp-action="Index">Strona główna</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark @(controller=="ComputerService"&&action=="Index"?"action":"")" asp-area="" asp-controller="ComputerService" asp-action="Index">Aktualne zgłoszenia</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark @(controller=="Home"&&action=="Offer"?"action":"")" asp-area="" asp-controller="Home" asp-action="Offer">Oferta</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark @(controller=="Home"&&action=="About"?"action":"")" asp-area="" asp-controller="Home" asp-action="About">O nas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark @(controller=="Home"&&action=="Contact"?"action":"")" asp-area="" asp-controller="Home" asp-action="Contact">Kontakt</a>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top  bg-primary ">
+        <div class="container text-white">
+            <div class="container text-left">
+                <div class="row">
+                    <div class="col mb-4 mt-4">
+                        <h3>Kontakt</h3><br/>
+                        Konrad Boroń<br/>
+                        tel.111222333<br/>
+                        e-mail: email@email.pl<br/>
+                        Adres: Adres ul. adresowa 21
+                    </div>
+                    <div class="col mt-4 mb-4">
+                        <h3>Odnośniki</h3> <br />
+                        <a asp-area="" asp-controller="Home" asp-action="Index" class="text-white" style="text-decoration: none;">Strona główna</a><br />
+                        <a asp-area="" asp-controller="Home" asp-action="Privacy" class="text-white" style="text-decoration: none;">Prywatność</a><br />
+                        <a asp-area="" asp-controller="Home" asp-action="Offer" class="text-white" style="text-decoration: none;">Oferta</a><br />
+                        <a asp-area="" asp-controller="Home" asp-action="About" class="text-white" style="text-decoration: none;">O nas</a><br />
+                        <a asp-area="" asp-controller="Home" asp-action="Contact" class="text-white" style="text-decoration: none;">Kontakt</a><br />
+
+                    </div>
+                    <div class="col mt-4">
+                        <h3>Godziny otwarcia</h3><br />
+                        Poniedziałek - Piątek &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 8:00-16:00 <br />
+                        Sobota &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 10:00-14:00<br />
+                        Niedziela &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Zamknięte
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

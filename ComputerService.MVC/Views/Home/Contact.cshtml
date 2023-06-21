@@ -1,0 +1,31 @@
+﻿@{
+
+}
+<div class=" mr-0 p-0" style="margin-bottom:188px">
+    <div class="text-center">
+        <h1>Formularz kontaktowy</h1>
+    </div>
+    <div class="row mt-5">
+        <div class="col-6 text-center">
+                Jeżeli masz pytania, z chęcią na nie odpowiemy. Aby skontaktować się z nami, <br />użyj danych ze stopki strony lub wyślij zapytanie za pomocą formularza kontaktowego.
+        </div>
+        <div class="col-6">
+            <form action="mailto:mail@mail.com" method="post" enctype="text/plain">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Imię</label>
+                    <input class="form-control" id="name" placeholder="Imię" style="width:80%">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Adres e-mail" style="width:80%">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Treść</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Treść" style="width:80%"></textarea>
+                </div>
+                <input type="submit" class="btn btn-outline-secondary" value="Wyślij formularz">
+                <input type="reset" class="btn btn-outline-secondary" value="Wyczyść dane">
+            </form>
+        </div>
+    </div>
+</div>
