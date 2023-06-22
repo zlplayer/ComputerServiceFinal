@@ -21,7 +21,7 @@ namespace ComputerService.Application.ComputerService.Commands.CreateComputerSer
         public async Task<Unit> Handle(CreateComputerServiceCommand request, CancellationToken cancellationToken)
         {
             var currentUser = _userContext.GetCurrentUser();
-            if (currentUser == null || !currentUser.IsInRole("Owner"))
+            if (currentUser == null)
             {
                 return Unit.Value;
             }

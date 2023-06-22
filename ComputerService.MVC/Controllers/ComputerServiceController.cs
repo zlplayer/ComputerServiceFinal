@@ -65,14 +65,14 @@ namespace CarWorkshop.MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [Authorize(Roles = "Owner")]
+        [Authorize]
         public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        [Authorize(Roles = "Owner")]
+        [Authorize]
         public async Task<IActionResult> Create(CreateComputerServiceCommand command)
         {
             if (!ModelState.IsValid)
