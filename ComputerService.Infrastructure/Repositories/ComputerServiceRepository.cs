@@ -30,7 +30,6 @@ namespace ComputerService.Infrastructure.Repositories
         public async Task<IEnumerable<Domain.Entities.ComputerService>> GetAll() => await _dbContext.ComputerServices.ToListAsync();
 
         public async Task<Domain.Entities.ComputerService> GetByEncodedName(string encodedName) => await _dbContext.ComputerServices.FirstAsync(c=>c.EncodedName == encodedName);
-        public Task<Domain.Entities.ComputerService?> GetByName(string name)
-         => _dbContext.ComputerServices.FirstOrDefaultAsync(cw => cw.Name.ToLower() == name.ToLower());
+       
     }
 }

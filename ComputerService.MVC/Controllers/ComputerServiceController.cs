@@ -24,8 +24,8 @@ namespace CarWorkshop.MVC.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var carWorkshops = await _mediator.Send(new GetAllComputerServicesQuery());
-            return View(carWorkshops);
+            var computerService = await _mediator.Send(new GetAllComputerServicesQuery());
+            return View(computerService);
         }
 
 

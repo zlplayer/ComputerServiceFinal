@@ -23,15 +23,15 @@ namespace ComputerService.Infrastructure.Seeders
                 {
                     var computerService=new Domain.Entities.ComputerService()
                     {
-                        Name="Computer Service",
-                        Description="Serwis komputerowy",
+                        Name="DELL",
+                        Description="Problem z forticlient",
                         ContactDetails = new()
                         {
                             City="Rzeszów",
                             Street="Szewska 2",
                             PostalCode="30-001",
                             PhoneNumber="+48699111453"
-                        }
+                        },
                     };
                     computerService.EncodeName();
                     _dbContext.ComputerServices.Add(computerService);

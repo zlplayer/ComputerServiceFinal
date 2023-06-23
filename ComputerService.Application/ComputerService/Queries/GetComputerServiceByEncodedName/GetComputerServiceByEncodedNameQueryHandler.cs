@@ -11,17 +11,17 @@ namespace ComputerService.Application.ComputerService.Queries.GetComputerService
 {
     public class GetCarWorkshopByEncodedNameQueryHandler : IRequestHandler<GetComputerServiceByEncodedNameQuery, ComputerServiceDto>
     {
-        private readonly IComputerServiceRepository _carWorkshopRepository;
+        private readonly IComputerServiceRepository _computerServiceRepository;
         private readonly IMapper _mapper;
 
-        public GetCarWorkshopByEncodedNameQueryHandler(IComputerServiceRepository carWorkshopRepository, IMapper mapper)
+        public GetCarWorkshopByEncodedNameQueryHandler(IComputerServiceRepository computerServiceRepository, IMapper mapper)
         {
-            _carWorkshopRepository = carWorkshopRepository;
+            _computerServiceRepository = computerServiceRepository;
             _mapper = mapper;
         }
         public async Task<ComputerServiceDto> Handle(GetComputerServiceByEncodedNameQuery request, CancellationToken cancellationToken)
         {
-            var carWorkshop = await _carWorkshopRepository.GetByEncodedName(request.EncodedName);
+            var carWorkshop = await _computerServiceRepository.GetByEncodedName(request.EncodedName);
 
             var dto = _mapper.Map<ComputerServiceDto>(carWorkshop);
 

@@ -7,13 +7,13 @@ namespace ComputerService.Application.ComputerService.Commands.CreateComputerSer
 {
     public class CreateCarWorkshopCommandHandler : IRequestHandler<CreateComputerServiceCommand>
     {
-        private readonly IComputerServiceRepository _carWorkshopRepository;
+        private readonly IComputerServiceRepository _computerServiceRepository;
         private readonly IMapper _mapper;
         private readonly IUserContext _userContext;
 
-        public CreateCarWorkshopCommandHandler(IComputerServiceRepository carWorkshopRepository, IMapper mapper, IUserContext userContext)
+        public CreateCarWorkshopCommandHandler(IComputerServiceRepository computerServiceRepository, IMapper mapper, IUserContext userContext)
         {
-            _carWorkshopRepository = carWorkshopRepository;
+            _computerServiceRepository = computerServiceRepository;
             _mapper = mapper;
             _userContext = userContext;
         }
@@ -30,7 +30,7 @@ namespace ComputerService.Application.ComputerService.Commands.CreateComputerSer
 
             carWorkshop.CreatedById = currentUser.Id;
 
-            await _carWorkshopRepository.Create(carWorkshop);
+            await _computerServiceRepository.Create(carWorkshop);
 
             return Unit.Value;
         }

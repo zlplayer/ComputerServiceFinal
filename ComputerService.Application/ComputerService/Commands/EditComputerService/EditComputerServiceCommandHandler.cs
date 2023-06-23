@@ -22,23 +22,22 @@ namespace ComputerService.Application.ComputerService.Commands.EditComputerServi
         }
         public async Task<Unit> Handle(EditComputerServiceCommand request, CancellationToken cancellationToken)
         {
-            var carWorkshop = await _repository.GetByEncodedName(request.EncodedName!);
+            var computerService = await _repository.GetByEncodedName(request.EncodedName!);
 
             var user = _userContext.GetCurrentUser();
-            var isEdibable = user != null && (carWorkshop.CreatedById == user.Id || user.IsInRole("Moderator"));
+            var isEdibable = user != null && (computerService.CreatedById == user.Id || user.IsInRole("Moderator"));
 
             if (!isEdibable)
             {
                 return Unit.Value;
             }
+            computerService.Name=request.Name;
+            computerService.Description = request.Description;
 
-            carWorkshop.Description = request.Description;
-            carWorkshop.About = request.About;
-
-            carWorkshop.ContactDetails.City = request.City;
-            carWorkshop.ContactDetails.PhoneNumber = request.PhoneNumber;
-            carWorkshop.ContactDetails.PostalCode = request.PostalCode;
-            carWorkshop.ContactDetails.Street = request.Street;
+            computerService.ContactDetails.City = request.City;
+            computerService.ContactDetails.PhoneNumber = request.PhoneNumber;
+            computerService.ContactDetails.PostalCode = request.PostalCode;
+            computerService.ContactDetails.Street = request.Street;
 
             await _repository.Commit();
 

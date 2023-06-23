@@ -6,19 +6,19 @@ namespace ComputerService.Application.ComputerService.Queries.GetAllComputerServ
 {
     internal class GetAllComputerServicesQueryHandler : IRequestHandler<GetAllComputerServicesQuery, IEnumerable<ComputerServiceDto>>
     {
-        private readonly IComputerServiceRepository _carWorkshopRepository;
+        private readonly IComputerServiceRepository _computerServiceRepository;
         private readonly IMapper _mapper;
 
-        public GetAllComputerServicesQueryHandler(IComputerServiceRepository carWorkshopRepository, IMapper mapper)
+        public GetAllComputerServicesQueryHandler(IComputerServiceRepository computerServiceRepository, IMapper mapper)
         {
-            _carWorkshopRepository = carWorkshopRepository;
+            _computerServiceRepository = computerServiceRepository;
             _mapper = mapper;
         }
 
         public async Task<IEnumerable<ComputerServiceDto>> Handle(GetAllComputerServicesQuery request, CancellationToken cancellationToken)
         {
-            var carWorkshops = await _carWorkshopRepository.GetAll();
-            var dtos = _mapper.Map<IEnumerable<ComputerServiceDto>>(carWorkshops);
+            var computerServices = await _computerServiceRepository.GetAll();
+            var dtos = _mapper.Map<IEnumerable<ComputerServiceDto>>(computerServices);
 
 
             return dtos;

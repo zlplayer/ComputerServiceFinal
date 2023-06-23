@@ -15,15 +15,7 @@ namespace ComputerService.Application.ComputerService.Commands.CreateComputerSer
             RuleFor(c => c.Name)
                 .NotEmpty()
                 .MinimumLength(2).WithMessage("Name should have atleast 2 characters")
-                .MaximumLength(20).WithMessage("Name should have maxium of 20 characters")
-                .Custom((value, context) =>
-                {
-                    var existingCarWorkshop = repository.GetByName(value).Result;
-                    if (existingCarWorkshop != null)
-                    {
-                        context.AddFailure($"{value} is not unique name for car workshop");
-                    }
-                });
+                .MaximumLength(20).WithMessage("Name should have maxium of 20 characters");
 
             RuleFor(c => c.Description)
                 .NotEmpty().WithMessage("Please enter description");
